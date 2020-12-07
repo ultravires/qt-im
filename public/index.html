@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,19 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+ 
     <div id="app"></div>
+
+    <script src="<%= BASE_URL %>app.js"></script>
     <!-- built files will be auto injected -->
+    <script>
+      ;(function() {
+        let platform = navigator.platform.toLowerCase()
+        let clazz = platform.includes('win32')
+          ? 'windows' : platform.includes('linux')
+          ? 'linux' : 'unknown-platform';
+        document.body.classList.add(clazz);
+      })();
+    </script>
   </body>
 </html>
