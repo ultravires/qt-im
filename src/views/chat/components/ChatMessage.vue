@@ -6,7 +6,7 @@
     <template v-if="message.type.toUpperCase() !== 'EVENT'">
       <div class="chat-message__time">2010-04-12 12:33:02</div>
       <el-row type="flex" :class="{'in-message': message.flow === 'in', 'out-message': message.flow === 'out'}">
-        <el-avatar class="chat-message__avatar" :size="32"></el-avatar>
+        <el-avatar class="chat-message__avatar" src="http://assets.sanphantom.com/avatar.jpg?imageMogr2/auto-orient/thumbnail/!32x32r/gravity/Center/crop/32x32/interlace/1/blur/1x0/quality/100|imageslim" :size="32"></el-avatar>
         <div class="chat-message__wrapper">
           <h3 v-if="message.conversationType === 'group'" class="chat-message__owner">【黄铜】浅安。</h3>
           <el-row type="flex" justify="start" class="chat-message__content">

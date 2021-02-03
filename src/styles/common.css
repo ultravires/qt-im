@@ -1,0 +1,16 @@
+html, body {
+	height: 100%;
+}
+
+html {
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.windows {
+	position: relative;
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+	border-radius: 1px;
+	box-sizing: border-box;
+	overflow: hidden;
+}

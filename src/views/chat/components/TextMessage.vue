@@ -20,15 +20,13 @@ export default {
 </script>
 
 <style scoped>
-.message-text {
-  border-radius: 6px;
-  overflow: hidden;
-}
-
 .message-bubble {
-  background-color: var(--message-bubble-color, #f1f3f4);
   padding: 10px;
+  background-image: var(--message-bubble-image, none);
+  background-color: var(--message-bubble-color, #f1f3f4);
+  color: var(--message-text-color, #000);
   box-sizing: border-box;
+  border-radius: 6px;
 }
 
 .text-msg {

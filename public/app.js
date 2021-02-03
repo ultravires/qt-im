@@ -7,18 +7,18 @@
 
 	const IMPanel = {
 		LoginPanel: {
-			url: '/im/xenon/login.html',
+			url: 'login.html',
 			name: '登录',
 			width: 600,
 			height: 480,
 			resizable: false
 		},
 		MainPanel: {
-			url: '/im/xenon/index.html',
+			url: 'main.html',
 			name: '即时通讯',
 			width: 300,
 			height: 710,
-			resizable: false
+			resizable: true
 		}
 	};
 

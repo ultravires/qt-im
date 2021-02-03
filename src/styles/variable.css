@@ -1,0 +1,5 @@
+:root {
+    --message-bubble-image: linear-gradient(#66b1ff, #3a8ee6);
+    --message-bubble-color: #66b1ff;
+    --message-text-color: #fff;
+}

@@ -54,7 +54,6 @@ export default class {
 
 				if (this.reconnection && eventType === 'onopen') {
 					this.options.$setInstance(event.currentTarget);
-					this.reconnectionCount = 0;
 				}
 
 				if (this.reconnection && eventType === 'onclose') {

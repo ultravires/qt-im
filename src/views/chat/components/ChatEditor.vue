@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-editor">
+  <div class="chat-editor" @keydown.enter="handleEnter">
     <el-input class="chat-editor__textarea" type="textarea" style="width:0;height:0;overflow:hidden;display:none"></el-input>
     <div class="chat-editor__toolbar"></div>
     <div class="chat-editor-wrapper">
@@ -50,6 +50,11 @@ export default {
     handleCompositionEnd() {
       this.isCompositionEnd = this.$refs.editor.compositionEnd = true;
       this._change();
+    },
+
+    // 当按下回车键
+    handleEnter() {
+      this.$emit('enter', this.content);
     },
 
     getHtmlContent() {

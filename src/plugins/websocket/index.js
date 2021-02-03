@@ -5,7 +5,7 @@ export default {
 	install(Vue, websocketUrl, options = {}) {
 		if (!websocketUrl || typeof websocketUrl !== 'string') {
 			throw new Error('[websocket] error websocket url!');
-		}	
+		}
 
 		options.$setInstance = (wsInstance) => {
 			Vue.prototype.$socket = wsInstance;

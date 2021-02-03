@@ -10,9 +10,9 @@ const name = defaultConfigs.title || '即时IM' // page title
 // https://cli.vuejs.org/zh/config/
 module.exports = {
 	// https://cli.vuejs.org/zh/config/#publicpath
-	publicPath: process.env.NODE_ENV === 'production' ? '/im' : '/',
+	publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
 
-	outputDir: 'dist',
+	outputDir: 'D:\\LeadalSoft\\LeadalIM\\etc\\docroot\\imq',
 
 	assetsDir: 'static',
 
@@ -32,7 +32,7 @@ module.exports = {
 		index: {
 			entry: 'src/views/main/main.js',
 			template: 'public/index.html',
-			filename: 'index.html',
+			filename: 'main.html',
 			title: '即时通讯'
 		},
 		chat: {

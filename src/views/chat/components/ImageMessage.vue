@@ -1,6 +1,6 @@
 <template>
   <div class="message message-image">
-    <el-image :src="message.payload.imageUrl" fit="fill" :preview-src-list="[message.payload.imageUrl]" lazy>
+    <el-image :src="message.payload.imageUrl" fit="fill" :preview-src-list="[message.payload.imageUrl]" lazy :style="{width: message.payload.imageInfo.width + 'px', height: message.payload.imageInfo.height + 'px', maxWidth: '100%'}">
       <div slot="error" class="image-slot">
         <img src="@/assets/chat/pic_fail_small.png" alt="加载失败"/>
       </div>

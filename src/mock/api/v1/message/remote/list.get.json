@@ -1,0 +1,287 @@
+[
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "text": "你在无中生有，暗度陈仓，凭空想象，凭空捏造，无言无语，无可救药，逝者安息，一路走好， 你是，永无止境，头脑有病，嘴里流能， 眼里有泡，污言秽语，咎由自取， 殃及无辜 ，无颜面对  江东父老"
+        },
+        "type": "TEXT",
+        "status": "success",
+        "flow": "in",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "imageFormat": "png",
+            "imageUrl": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg__.jpeg",
+            "imageInfo": {
+                "width": 450,
+                "height": 305,
+                "size": 102400,
+                "createdTime": 1232132,
+                "lastModifiedTime": 1232134
+            }
+        },
+        "type": "IMAGE",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "fileExtensionName": ".mp4",
+            "fileName": "《葫芦娃兄弟全集》",
+            "fileSize": 2340010
+        },
+        "type": "FILE",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "fileName": "《唐僧师徒四人在家观看葫芦娃兄弟大战变形金刚》",
+            "fileSize": 23214123,
+            "fileExtensionName": ".zip"
+        },
+        "type": "FILE",
+        "status": "success",
+        "flow": "in",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "audioName": "horse",
+            "audioUrl": "https://www.runoob.com/try/demo_source/horse.ogg",
+            "audioType": "audio/ogg",
+            "audioSize": 231312,
+            "audioLength": 3000
+        },
+        "type": "AUDIO",
+        "status": "success",
+        "flow": "in",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+        	"type": "success",
+            "icon": "el-icon-success",
+            "text": "对方已成功接收了您发送的离线文件“QuickLook-3.6.4.msi”(44.68MB)。"
+        },
+        "type": "EVENT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+        	"type": "info",
+            "text": "张三 退出了群聊。"
+        },
+        "type": "EVENT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+        	"type": "warning",
+            "text": "对方拒绝接收您的文件！"
+        },
+        "type": "EVENT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+        	"type": "error",
+            "text": "发送文件失败！"
+        },
+        "type": "EVENT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "imageFormat": "png",
+            "imageUrl": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+            "imageInfo": {
+                "width": 450,
+                "height": 305,
+                "size": 102400,
+                "createdTime": 1232132,
+                "lastModifiedTime": 1232134
+            }
+        },
+        "type": "IMAGE",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "text": "."
+        },
+        "type": "TEXT",
+        "status": "success",
+        "flow": "in",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "imageFormat": "png",
+            "imageUrl": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+            "imageInfo": {
+                "width": 450,
+                "height": 305,
+                "size": 102400,
+                "createdTime": 1232132,
+                "lastModifiedTime": 1232134
+            }
+        },
+        "type": "IMAGE",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "text": "Hello World!"
+        },
+        "type": "TEXT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "text": "Hello World! 4"
+        },
+        "type": "TEXT",
+        "status": "success",
+        "flow": "in",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "imageFormat": "png",
+            "imageUrl": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+            "imageInfo": {
+                "width": 450,
+                "height": 305,
+                "size": 102400,
+                "createdTime": 1232132,
+                "lastModifiedTime": 1232134
+            }
+        },
+        "type": "IMAGE",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    },
+    {
+        "uuid": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "to": "1020915098",
+        "from": "523449036",
+        "conversationId": "xxxx-xxxx-xxxxxxxx-xxxx",
+        "conversationType": "c2c",
+        "payload": {
+            "text": "Hello World!"
+        },
+        "type": "TEXT",
+        "status": "success",
+        "flow": "out",
+        "isRevoked": "false",
+        "isRead": "true"
+    }
+]

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
 
+import '@/styles/common.css'
 import 'normalize.css';
 import 'element-ui/lib/theme-chalk/index.css';
 

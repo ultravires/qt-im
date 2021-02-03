@@ -1,13 +1,16 @@
 <template>
   <div class="message message-audio">
-    <audio ref="audio" controls>
-      <source :src="message.payload.audioUrl" :type="message.payload.audioType" />
-    </audio>
+    <div class="message-bubble">
+      <audio-player :src="message.payload.audioUrl" :type="message.payload.audioType"></audio-player>
+    </div>
   </div>
 </template>
 
 <script>
+import AudioPlayer from '@/components/audio-player/AudioPlayer.vue';
+
 export default {
+  components: { AudioPlayer },
   name: 'AudioMessage',
 
   props: {
@@ -38,3 +41,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.message-bubble {
+  padding: 10px;
+  background-image: var(--message-bubble-image, none);
+  background-color: var(--message-bubble-color, #f1f3f4);
+  color: var(--message-text-color, #000);
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+</style>

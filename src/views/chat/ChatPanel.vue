@@ -28,6 +28,10 @@
     <!-- 消息显示区 -->
 
     <el-footer class="chat-editor-container" height="200px">
+      <div class="chat-record-view">
+        <div class="view-duration-progress" :style="{width: (audioDuration / 60 * 100) + '%'}"></div>
+        <span class="view-text">{{ recordTip }}</span>
+      </div>
       <quill-editor ref="editor" :mention="true" @enter="handleEnter"></quill-editor>
       <el-row
         class="chat-button-groups"
@@ -72,7 +76,8 @@ import { fetchMessages } from "@/api/message";
 import VueUploadComponent from 'vue-upload-component';
 import { uploadDirectory, uploadFile } from '@/api/file';
 import { Message } from 'element-ui';
-import { createImageMessage, createTextMessage, IM, sendMessage } from '@/utils/im';
+import { createImageMessage, createTextMessage, IM } from '@/utils/im';
+import { audioRecorder } from './libs/Recorder';
 
 Message.install = function(Vue) {
   Vue.prototype.$message = Message;
@@ -86,7 +91,7 @@ const QuillEditor = () => import("./components/QuillEditor");
 export default {
   name: "ChatPage",
 
-  components: { ChatMessage, QuillEditor, 'file-upload': VueUploadComponent },
+  components: { ChatMessage, QuillEditor, FileUpload: VueUploadComponent },
 
   data() {
     return {
@@ -98,6 +103,14 @@ export default {
       autoUpload: false,
       // 是否使用 Ctrl+Enter 发送消息
       sendWithCtrl: false,
+      // 录音提示
+      recordTip: '正在录音...',
+      // 是否允许客户端自动滚动到底部
+      // 1. 当用户正在查看历史消息记录的时候不允许收到新的消息滚动至底部
+      // 2. 当用户正在聊天的时候，收到消息要滚动至底部
+      autoScroll: false,
+      // 音频时长
+      audioDuration: 0
     };
   },
 
@@ -108,6 +121,12 @@ export default {
           this.dialogFileListVisible = false;
         }
       }
+    },
+
+    messages() {
+      this.$nextTick(() => {
+        this.autoScroll && this.$refs.messages.scrollTo({top: 99999});
+      });
     }
   },
 
@@ -117,7 +136,67 @@ export default {
     }
   },
 
+  created() {
+    // TODO fix: 这里的代码其实是找不到 $refs.messages 的.
+    // 因为 $refs.messages 在组件内部无法被 this.$nextTick 检测到 DOM 更新
+    // this.$nextTick(() => {
+    //   this.$refs.$messages.scrollTo({top: 99999});
+    // });
+
+    const that = this;
+
+    // 录音设置
+    audioRecorder.options = {
+      type: 'ogg',
+      min: 1,
+      max: 60
+    };
+
+    // 录音开始回调
+    audioRecorder.onStart = function() {
+      console.log('开始了！');
+    }
+
+    // 录音实时回调
+    audioRecorder.onProgress = function(duration) {
+      that.audioDuration = duration;
+    }
+
+    // 当录音被动停止（超过最大录音时长）或手动停止时触发
+    audioRecorder.onStop = function() {
+      console.log('停止了！');
+    }
+
+    // 开始录音
+    startAudioRecord().catch(err => { this.$message({ message: err, type: 'error' }) });
+
+    // 模拟录音 5 s
+    let sleep = 0;
+    let timer = setInterval(() => {
+      if (sleep++ < 3) {
+        // nothing
+      } else {
+        // 停止录音
+        stopAudioRecord().catch(err => { this.$message({ message: err, type: 'error' }) });
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    async function startAudioRecord() {
+      const mediaStream = await audioRecorder.start();
+
+      console.log(mediaStream);
+    }
+
+    async function stopAudioRecord() {
+      const { blob, duration } = await audioRecorder.stop();
+      console.log(blob, duration);
+    }
+  },
+
   mounted() {
+    document.body.hidden = false;
+
     this.getMessages();
 
     let dropzone = this.$refs.upload.$el;
@@ -148,10 +227,12 @@ export default {
     },
 
     handleEnter() {
-      !this.sendWithCtrl ? sendMessage() : '';
+      !this.sendWithCtrl ? this.sendMessage() : '';
     },
 
     sendMessage() {
+      this.autoScroll = true;
+
       const editor = this.$refs.editor.editor;
       let text = this.getTextContent();
       let images = this.getImageContent();
@@ -179,7 +260,6 @@ export default {
     },
 
     getTextContent() {
-
       const editor = this.$refs.editor.editor;
       let delta = editor.getContents();
       let text = [];
@@ -372,23 +452,6 @@ export default {
 </script>
 
 <style>
-html, body {
-  height: 100%;
-}
-
-html {
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.windows {
-  position: relative;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
-  border-radius: 1px;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
 .el-upload {
   width: 100%;
   height: 100%;
@@ -431,6 +494,40 @@ html {
   height: 40px;
   line-height: 40px;
   box-sizing: border-box;
+}
+
+.chat-record-view {
+  position: relative;
+  background-color: #f3f3f3;
+  width: 100%;
+  height: 18px;
+  line-height: 18px;
+}
+
+.chat-record-view > .view-duration-progress {
+  width: 32%;
+  height: 100%;
+  background-color: #bee8f8;
+}
+
+.chat-record-view > .view-text {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding-left: 12px;
+  font-size: 12px;
+  color: #565f7b;
+}
+
+.chat-record-view > .view-text::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: calc(50% - 5px);
+  left: 0;
+  background-color: #0f0;
+  border-radius: 50%;
 }
 
 /* Dropzone - start */
