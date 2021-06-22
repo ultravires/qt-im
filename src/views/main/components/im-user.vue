@@ -5,12 +5,25 @@
         <el-avatar src="" :size="36"></el-avatar>
       </figure>
       <el-row class="im-user-content" type="flex" justify="space-between">
-        <h6 class="name">张三</h6>
-        <small>南无阿弥陀佛</small>
+        <h6 class="name">{{ data.label }}</h6>
+        <small>{{ data.text }}</small>
       </el-row>
     </el-row>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'ImUser',
+
+  props: {
+    data: {
+      type: Object,
+      default: () => {}
+    }
+  }
+};
+</script>
 
 <style scoped>
 figure {

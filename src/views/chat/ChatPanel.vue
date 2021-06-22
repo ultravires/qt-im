@@ -39,6 +39,7 @@
         justify="end"
         align="middle"
       >
+        <el-button type="default" size="mini" @click="close">关闭</el-button>
         <el-button type="primary" size="mini" @click="sendMessage">发送</el-button>
       </el-row>
     </el-footer>
@@ -446,6 +447,10 @@ export default {
 
     scrollToBottom() {
       this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;
+    },
+
+    close() {
+      this.$qtBridge.close();
     }
   },
 };
@@ -470,6 +475,7 @@ export default {
 .chat-container {
   position: relative;
   height: 100%;
+  background-color: #fff;
   overflow: hidden;
 }
 

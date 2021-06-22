@@ -36,21 +36,39 @@
         <el-tab-pane label="联系人">
           <div class="tab-content__wrap">
             <el-tree :data="contacts">
-              <template slot-scope="{ node }">
+              <template slot-scope="{ node, data }">
                 <span v-if="!node.isLeaf">{{ node.label }}</span>
-                <im-user v-else />
+                <im-user
+                  v-else
+                  :data="data"
+                  @dblclick.native="openChatPanel">
+                </im-user>
               </template>
             </el-tree>
           </div>
         </el-tab-pane>
         <el-tab-pane label="群组">
           <div class="tab-content__wrap">
-            <el-tree :data="rooms"></el-tree>
+            <el-tree :data="rooms">
+              <template slot-scope="{ node, data }">
+                <span v-if="!node.isLeaf">{{ node.label }}</span>
+                <im-user
+                  v-else
+                  :data="data"
+                  @dblclick.native="openChatPanel">
+                </im-user>
+              </template>
+            </el-tree>
           </div>
         </el-tab-pane>
         <el-tab-pane label="会话">
           <div class="tab-content__wrap">
-            <im-user v-for="item in 12" :key="item" />
+            <im-user
+              v-for="item in recentMessages"
+              :key="item"
+              :data="item"
+              @dblclick.native="openChatPanel">
+            </im-user>
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -61,7 +79,7 @@
 <script>
 import Vue from "vue";
 import { fetchPreference } from "@/api/preference";
-import { Avatar, Input, Row, TabPane, Tabs, Tree } from "element-ui";
+import { Avatar, Input, Row, TabPane, Tabs, Tree, Tooltip } from "element-ui";
 import WindowControls from '@/components/window-control/WindowControls.vue';
 
 Vue.component(Avatar.name, Avatar);
@@ -70,6 +88,7 @@ Vue.component(Input.name, Input);
 Vue.component(Tabs.name, Tabs);
 Vue.component(TabPane.name, TabPane);
 Vue.component(Tree.name, Tree);
+Vue.component(Tooltip.name, Tooltip);
 
 const BoundingBox = () => import('@/components/bounding-box/BoundingBox');
 const ImUser = () => import('./components/im-user');
@@ -94,7 +113,8 @@ export default {
           label: '组长',
           children: [{
             id: '1-1-1',
-            label: '张三'
+            label: '张三',
+            text: '南无阿弥陀佛'
           }]
         }]
       }, {
@@ -102,11 +122,13 @@ export default {
         label: '后端研发部',
         children: [{
           id: '2-1',
-          label: '李四'
+          label: '李四',
+          text: '暂无个性签名'
         }]
       }, {
         id: '3',
-        label: '安全开发部'
+        label: '安全开发部',
+        text: '暂无个性签名'
       }],
 
       rooms: [{
@@ -114,15 +136,31 @@ export default {
         label: '前端群',
         children: [{
           id: '1-1',
-          label: 'Front-End'
+          label: 'Front-End',
+          text: '暂无相关群描述'
         }]
       }, {
         id: '2',
         label: '后端群',
         children: [{
           id: '2-1',
-          label: 'Back-End'
+          label: 'Back-End',
+          text: '暂无相关群描述'
         }]
+      }],
+
+      recentMessages: [{
+        label: '向成渝',
+        text: '在吗？'
+      }, {
+        label: '向成渝',
+        text: '在吗？'
+      }, {
+        label: '向成渝',
+        text: '在吗？'
+      }, {
+        label: '向成渝',
+        text: '在吗？'
       }]
     };
   },
@@ -173,6 +211,18 @@ export default {
       return JSON.parse(window.localStorage.getItem("user"));
     },
 
+    openChatPanel() {
+      this.$qtBridge.open({
+        key: 'im-chat-xxx',
+        url: '/chat.html',
+        caption: '聊天窗口',
+        width: window.screen.availWidth / 2,
+        height: window.screen.availHeight * (2 / 3),
+        top: 0,
+        left: 0
+      })
+    },
+
     doWebsocketCertification() {
       if (this.$socket.readyState === this.$socket.OPEN) {
         const certify = {
@@ -214,6 +264,10 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: #fff;
+  background-image: linear-gradient(90deg, #13b9ff, #b51fff);
+  color: #000;
+  user-select: none;
 }
 
 .main-bg {
@@ -295,5 +349,18 @@ export default {
   border-radius: 0;
   border-color: transparent;
   background-color: #eeeeeedd;
+}
+
+.el-tree-node__content {
+  color: #000;
+  cursor: default;
+}
+
+.el-tree-node__content:hover {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.el-tree-node.is-current > .el-tree-node__content {
+  background-color: rgba(122, 248, 49, .2);
 }
 </style>

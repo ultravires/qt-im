@@ -10,7 +10,7 @@ const name = defaultConfigs.title || '即时IM' // page title
 // https://cli.vuejs.org/zh/config/
 module.exports = {
 	// https://cli.vuejs.org/zh/config/#publicpath
-	publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+	publicPath: process.env.NODE_ENV === 'production' ? './' : './',
 
 	outputDir: 'D:\\LeadalSoft\\LeadalIM\\etc\\docroot\\imq',
 
